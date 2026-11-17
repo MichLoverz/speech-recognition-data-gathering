@@ -42,14 +42,14 @@
 
     <form id="setup-form" class="form" novalidate>
         <div class="field">
-            <label for="f-kode">Kode pembicara</label>
-            <input id="f-kode" name="kode" autocomplete="off" spellcheck="false" placeholder="mis. P03" maxlength="12">
-            <p class="help">Kode dari orang yang memberimu tautan ini. Namamu tidak dicatat.</p>
+            <label for="f-nama">Nama</label>
+            <input id="f-nama" name="nama" autocomplete="name" placeholder="mis. Budi Santoso" maxlength="40">
+            <p class="help">Dipakai untuk menamai file rekamanmu.</p>
         </div>
         <div class="field">
             <label for="f-blok">Blok kalimat</label>
             <select id="f-blok" name="blok"></select>
-            <p class="help">Juga dari orang yang memberimu tautan ini.</p>
+            <p class="help">Dari orang yang memberimu tautan ini.</p>
         </div>
         <div class="field">
             <label for="f-jk">Jenis kelamin</label>
@@ -87,7 +87,7 @@
 
         <div class="consent">
             <h2>Persetujuan</h2>
-            <p>Suaramu direkam saat membacakan kalimat di halaman ini. Rekaman dan isian di atas dipakai untuk <strong>melatih dan menguji model pengenalan suara (Whisper)</strong> dalam proyek kuliah HireNote. Namamu tidak dicatat; rekaman hanya diberi kode pembicara. Rekaman tidak diunggah ke repositori publik. Kamu bisa meminta rekamanmu dihapus kapan saja dengan menyebutkan kode pembicaramu.</p>
+            <p>Suaramu direkam saat membacakan kalimat di halaman ini. Rekaman dan isian di atas dipakai untuk <strong>melatih dan menguji model pengenalan suara (Whisper)</strong> dalam proyek kuliah HireNote. Namamu dicatat supaya rekaman bisa dikenali dan dihapus kalau kamu minta; di laporan, nama diganti kode. Rekaman tidak diunggah ke repositori publik. Kamu bisa meminta rekamanmu dihapus kapan saja ke orang yang memberimu tautan ini.</p>
             <label class="check"><input type="checkbox" id="f-setuju" name="setuju"> Saya mengerti dan setuju suara saya direkam untuk keperluan di atas.</label>
         </div>
 

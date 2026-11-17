@@ -7,7 +7,12 @@
  * was read even if kalimat.tsv is edited later. "Unduh semua" packs the takes,
  * a transcript TSV and the speaker metadata into one ZIP.
  *
- * Link format: index.html?kode=P03&blok=L2  (both optional; the form asks otherwise)
+ * Link format: index.html?blok=L2  (optional; the form asks otherwise).
+ *
+ * Speakers are identified by name (user decision 2026-11-18: the speakers are
+ * the team's own classmates, a code list was extra work). Internally `kode`
+ * holds a filename-safe slug of the name ("Budi Santoso" → "budi-santoso"),
+ * used for storage keys and file names; `nama` keeps the name as typed.
  */
 import { openMic, concat, resample, encodeWav, stats, meterPercent, TARGET_RATE } from './lib/audio.js';
 import { makeZip } from './lib/zip.js';
@@ -54,9 +59,8 @@ async function init() {
     }
 
     const p = linkParams();
-    const linkMatches = !p.kode || (state.profile && p.kode === state.profile.kode);
     const blokMatches = !p.blok || (state.profile && p.blok === state.profile.blok);
-    if (state.profile && linkMatches && blokMatches) return startRecordView();
+    if (state.profile && state.profile.nama && blokMatches) return startRecordView();
     showSetup(p);
 }
 
@@ -77,9 +81,14 @@ async function loadSentences() {
 
 function linkParams() {
     const q = new URLSearchParams(location.search);
-    const kode = (q.get('kode') || '').trim().toUpperCase();
     const blok = (q.get('blok') || '').trim().toUpperCase();
-    return { kode: kode || null, blok: blok || null };
+    return { blok: blok || null };
+}
+
+/** "Budi Santoso" → "budi-santoso" (ASCII, safe in file names and storage keys). */
+function slug(name) {
+    return name.normalize('NFD').replace(/[̀-ͯ]/g, '')
+        .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40);
 }
 
 function show(view) {
@@ -96,8 +105,7 @@ function fail(msg) {
 
 function showSetup(p = {}) {
     const f = $('setup-form');
-    // A link for another speaker code on a shared device must not inherit the previous speaker's answers.
-    const prof = (state.profile && (!p.kode || p.kode === state.profile.kode)) ? state.profile : {};
+    const prof = state.profile || {};
 
     const sel = $('f-blok');
     sel.innerHTML = '<option value="">Pilih…</option>';
@@ -109,9 +117,8 @@ function showSetup(p = {}) {
         sel.appendChild(o);
     }
 
-    f.kode.value = p.kode || prof.kode || '';
+    f.nama.value = prof.nama || '';
     f.blok.value = p.blok || prof.blok || '';
-    f.kode.readOnly = Boolean(p.kode);
     f.blok.disabled = Boolean(p.blok && state.blocks.includes(p.blok));
     f.jenis_kelamin.value = prof.jenis_kelamin || '';
     f.daerah.value = prof.daerah || '';
@@ -126,10 +133,11 @@ function showSetup(p = {}) {
 $('setup-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const f = e.target;
-    const kode = f.kode.value.trim().toUpperCase();
+    const nama = f.nama.value.trim().replace(/\s+/g, ' ');
+    const kode = slug(nama);
     const blok = f.blok.value;
     const errors = [];
-    if (!/^[A-Z0-9-]{2,12}$/.test(kode)) errors.push('Isi kode pembicara (2–12 huruf/angka, mis. P03).');
+    if (kode.length < 2) errors.push('Isi namamu (huruf latin).');
     if (!state.blocks.includes(blok)) errors.push('Pilih blok kalimat.');
     if (!f.jenis_kelamin.value) errors.push('Pilih jenis kelamin (atau “Tidak ingin menyebut”).');
     if (!f.perangkat.value) errors.push('Pilih mic yang dipakai.');
@@ -142,7 +150,7 @@ $('setup-form').addEventListener('submit', async (e) => {
     }
 
     state.profile = {
-        kode, blok,
+        nama, kode, blok,
         jenis_kelamin: f.jenis_kelamin.value,
         daerah: f.daerah.value.trim(),
         perangkat: f.perangkat.value,
@@ -169,7 +177,7 @@ async function startRecordView() {
     state.idx = firstOpen === -1 ? 0 : firstOpen;
     state.gridBuilt = false;
     $('grid').hidden = true;
-    $('whoami').textContent = `Kode ${kode} · blok ${blok}`;
+    $('whoami').textContent = `${state.profile.nama} · blok ${blok}`;
     $('mic-gate').hidden = Boolean(state.mic);
     show('v-record');
     render();
@@ -517,7 +525,7 @@ async function buildZip() {
 
     const files = [];
     const rows = [[
-        'file', 'id', 'kode_pembicara', 'set', 'blok', 'peran', 'gaya', 'teks', 'teks_sama_dengan_terkini',
+        'file', 'id', 'pembicara', 'set', 'blok', 'peran', 'gaya', 'teks', 'teks_sama_dengan_terkini',
         'durasi_detik', 'puncak', 'rms_dbfs', 'sampel_klip', 'peringatan', 'percobaan', 'direkam_pada', 'laju_asal_hz',
     ]];
     for (const t of takes) {
@@ -536,7 +544,8 @@ async function buildZip() {
 
     const now = new Date();
     const meta = {
-        kode: p.kode,
+        nama: p.nama,
+        pembicara: p.kode,
         blok: p.blok,
         jenis_kelamin: p.jenis_kelamin,
         daerah: p.daerah || null,
