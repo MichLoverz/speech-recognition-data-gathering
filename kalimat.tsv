@@ -1,0 +1,376 @@
+id	set	blok	peran	gaya	teks
+L1-001	latih	L1	pewawancara	rapi	Boleh ceritakan pengalaman Anda bekerja dengan database relasional?
+L1-002	latih	L1	kandidat	rapi	Saya sudah 2 tahun memakai PostgreSQL untuk aplikasi kasir, terutama untuk laporan stok harian.
+L1-003	latih	L1	kandidat	lisan	Tabel pesanan kami, eee, sudah lebih dari 3 juta baris, jadi setiap query baru harus dicek dulu rencana eksekusinya.
+L1-004	latih	L1	kandidat	rapi	Saya lebih suka menulis migration kecil-kecil supaya rollback-nya gampang kalau ada masalah di production.
+L1-005	latih	L1	kandidat	rapi	Untuk relasi many to many, saya biasanya membuat tabel pivot dengan foreign key di kedua sisi.
+L1-006	latih	L1	kandidat	lisan	Eee, waktu itu kami belum pakai transaction, jadi kalau pembayaran gagal datanya cuma setengah tersimpan.
+L1-007	latih	L1	kandidat	rapi	Saya pernah memecah satu tabel log yang sangat besar menjadi partisi per bulan supaya pencarian lebih cepat.
+L1-008	latih	L1	kandidat	lisan	Backup database kami jalan setiap jam 2 pagi, hmm, dan disimpan selama 30 hari.
+L1-009	latih	L1	pewawancara	rapi	Bagaimana cara Anda merancang endpoint API untuk aplikasi mobile?
+L1-010	latih	L1	kandidat	rapi	Saya biasanya mulai dari kontrak API dulu, baru menulis controller dan validasinya.
+L1-011	latih	L1	kandidat	rapi	Semua response kami memakai format JSON yang sama, jadi tim frontend tidak perlu menebak struktur datanya.
+L1-012	latih	L1	kandidat	lisan	Untuk autentikasi kami pakai JWT, eh, maksud saya token dari Laravel Sanctum.
+L1-013	latih	L1	kandidat	rapi	Rate limit di API publik kami 60 request per menit untuk setiap pengguna.
+L1-014	latih	L1	kandidat	rapi	Kalau ada perubahan besar, kami membuat versi baru seperti v2 supaya aplikasi lama tidak rusak.
+L1-015	latih	L1	kandidat	rapi	Saya menulis dokumentasi endpoint di Swagger supaya tim QA bisa langsung mencobanya.
+L1-016	latih	L1	kandidat	lisan	Hmm, webhook dari payment gateway itu kadang datang dua kali, jadi kami harus bikin pengecekan idempotency.
+L1-017	latih	L1	kandidat	rapi	Proses kirim email kami pindahkan ke queue, jadi pengguna tidak perlu menunggu di halaman checkout.
+L1-018	latih	L1	pewawancara	rapi	Apakah Anda pernah memakai Docker di pekerjaan sebelumnya, dan untuk keperluan apa saja?
+L1-019	latih	L1	kandidat	rapi	Pernah, semua service kami jalan di container Docker dan diatur dengan Docker Compose untuk development.
+L1-020	latih	L1	kandidat	lisan	Deployment ke server staging itu, eee, otomatis setiap ada merge ke branch develop.
+L1-021	latih	L1	kandidat	rapi	Pipeline CI kami menjalankan unit test dan lint dulu sebelum image-nya di-build.
+L1-022	latih	L1	kandidat	lisan	Jadi, eee, waktu deploy pertama kali environment variable-nya lupa diisi, jadi aplikasinya langsung error.
+L1-023	latih	L1	kandidat	rapi	Server kami di cloud punya 4 vCPU dan 8 GB RAM, cukup untuk sekitar 2000 pengguna aktif.
+L1-024	latih	L1	kandidat	rapi	Saya memasang monitoring dengan Grafana supaya tim tahu kalau penggunaan memori tiba-tiba naik.
+L1-025	latih	L1	kandidat	lisan	Log aplikasi kami kirim ke satu tempat, ya, supaya gampang dicari waktu ada insiden.
+L1-026	latih	L1	pewawancara	rapi	Bagaimana Anda memastikan kode Anda tidak merusak fitur lain?
+L1-027	latih	L1	kandidat	rapi	Saya menulis unit test untuk logika bisnis dan feature test untuk alur penting seperti pembayaran.
+L1-028	latih	L1	kandidat	rapi	Coverage test di proyek terakhir saya sekitar 70 persen, dan kami tidak boleh menurunkannya.
+L1-029	latih	L1	kandidat	lisan	Kadang saya, saya nulis test-nya belakangan, jujur, tapi sekarang saya coba biasakan test dulu.
+L1-030	latih	L1	kandidat	rapi	Untuk bug yang dilaporkan pengguna, saya selalu menulis test yang gagal dulu sebelum memperbaikinya.
+L1-031	latih	L1	kandidat	rapi	Tim QA kami melakukan regression test setiap sprint sebelum rilis ke production.
+L1-032	latih	L1	kandidat	rapi	Saya memakai mock untuk layanan pihak ketiga supaya test tidak bergantung pada koneksi internet.
+L1-033	latih	L1	pewawancara	rapi	Ceritakan bug paling aneh yang pernah Anda temui.
+L1-034	latih	L1	kandidat	rapi	Ada bug yang hanya muncul di zona waktu tertentu karena tanggalnya disimpan tanpa timezone.
+L1-035	latih	L1	kandidat	lisan	Itu, eee, itu bug-nya cuma muncul di hari Senin, ternyata karena cron job mingguan bentrok dengan backup.
+L1-036	latih	L1	kandidat	rapi	Saya menemukan memory leak setelah melihat grafik penggunaan memori naik terus selama 3 hari.
+L1-037	latih	L1	kandidat	lisan	Penyebabnya ternyata, hmm, cache yang tidak pernah dihapus, jadi isinya terus bertambah.
+L1-038	latih	L1	kandidat	rapi	Untuk melacak error di production kami memakai Sentry, jadi stack trace-nya langsung terlihat.
+L1-039	latih	L1	kandidat	lisan	Saya sempat curiga ke database, eh ternyata masalahnya di konfigurasi load balancer.
+L1-040	latih	L1	kandidat	rapi	Setelah insiden, kami selalu menulis catatan postmortem tanpa menyalahkan siapa pun.
+L1-041	latih	L1	pewawancara	rapi	Bagaimana cara tim Anda membagi pekerjaan dalam satu sprint?
+L1-042	latih	L1	kandidat	rapi	Sprint kami 2 minggu, dan setiap tugas diberi estimasi story point saat sprint planning.
+L1-043	latih	L1	kandidat	lisan	Setiap pagi ada daily standup, eee, kira-kira 15 menit untuk membahas progres dan hambatan.
+L1-044	latih	L1	kandidat	rapi	Saya terbiasa membuat pull request kecil supaya reviewer bisa mengeceknya dalam waktu kurang dari 30 menit.
+L1-045	latih	L1	kandidat	lisan	Kalau ada konflik saat merge, eee, saya biasanya rebase dulu ke branch utama.
+L1-046	latih	L1	kandidat	rapi	Di akhir sprint kami mengadakan retrospective untuk membahas apa yang perlu diperbaiki.
+L1-047	latih	L1	kandidat	lisan	Saya pernah jadi mentor untuk, hmm, 2 anak magang dan bantu mereka memahami struktur kode kami.
+L1-048	latih	L1	kandidat	rapi	Kalau ada perbedaan pendapat soal desain, saya lebih suka membuat prototipe kecil daripada berdebat lama.
+L1-049	latih	L1	pewawancara	rapi	Teknologi frontend apa yang paling Anda kuasai, dan sudah berapa lama memakainya?
+L1-050	latih	L1	kandidat	rapi	Saya paling sering memakai React dengan TypeScript, dan untuk styling saya memakai Tailwind.
+L1-051	latih	L1	kandidat	rapi	Dashboard yang saya buat menampilkan grafik penjualan yang diperbarui setiap 5 menit.
+L1-052	latih	L1	kandidat	lisan	Untuk state management awalnya kami pakai Redux, terus, eee, pindah ke React Query karena lebih simpel.
+L1-053	latih	L1	kandidat	rapi	Saya memastikan halaman tetap bisa dipakai di layar HP dengan lebar 360 piksel.
+L1-054	latih	L1	kandidat	lisan	Gambar produk kami kompres dan, eee, dimuat pakai lazy loading supaya halaman pertama tampil lebih cepat.
+L1-055	latih	L1	pewawancara	rapi	Bagaimana cara Anda menjaga keamanan aplikasi web yang menyimpan data pelanggan?
+L1-056	latih	L1	kandidat	rapi	Semua input dari pengguna divalidasi di server, bukan hanya di browser.
+L1-057	latih	L1	kandidat	rapi	Password pengguna disimpan dengan hash bcrypt, tidak pernah dalam bentuk teks biasa.
+L1-058	latih	L1	kandidat	lisan	Kami pernah kena SQL injection di form pencarian lama, eee, karena query-nya masih disusun manual.
+L1-059	latih	L1	kandidat	rapi	Sejak kejadian itu semua query kami memakai prepared statement atau ORM.
+L1-060	latih	L1	kandidat	rapi	API key disimpan di environment variable dan tidak pernah di-commit ke repository.
+L1-061	latih	L1	pewawancara	rapi	Apakah Anda pernah mengerjakan proyek machine learning, baik di kampus maupun di kantor?
+L1-062	latih	L1	kandidat	rapi	Saya pernah membuat model klasifikasi sederhana untuk memisahkan email keluhan dan email pertanyaan.
+L1-063	latih	L1	kandidat	lisan	Datanya sekitar 5000 email, eee, yang kami beri label manual selama 2 minggu.
+L1-064	latih	L1	kandidat	lisan	Akurasinya waktu itu 85 persen, eh, maksud saya 85 persen di data uji, di data latih lebih tinggi.
+L1-065	latih	L1	kandidat	rapi	Model itu kami jalankan sebagai service terpisah supaya aplikasi utama tidak ikut lambat.
+L1-066	latih	L1	pewawancara	rapi	Sudah berapa lama total pengalaman kerja Anda sebagai developer sampai sekarang?
+L1-067	latih	L1	kandidat	rapi	Total pengalaman saya 3 tahun, 1 tahun sebagai freelancer dan 2 tahun di perusahaan startup.
+L1-068	latih	L1	kandidat	rapi	Ekspektasi gaji saya di kisaran 10 sampai 12 juta per bulan, tergantung benefit yang ditawarkan.
+L1-069	latih	L1	kandidat	lisan	Saya, eee, saya bisa mulai kerja kira-kira 1 bulan setelah surat penawaran ditandatangani.
+L1-070	latih	L1	kandidat	rapi	Saya tertarik dengan posisi ini karena produknya dipakai banyak UMKM di Indonesia.
+L1-071	latih	L1	kandidat	rapi	Dalam 2 tahun ke depan saya ingin lebih mendalami arsitektur sistem dan cloud.
+L1-072	latih	L1	pewawancara	rapi	Sebelum wawancara ini selesai, apakah ada pertanyaan yang ingin Anda ajukan kepada kami?
+L1-073	latih	L1	kandidat	rapi	Saya ingin tahu bagaimana proses onboarding untuk developer baru di tim ini.
+L1-074	latih	L1	kandidat	lisan	Oh iya, satu lagi, eee, apakah tim ini kerja hybrid atau penuh di kantor?
+L1-075	latih	L1	kandidat	rapi	Terima kasih atas waktunya, saya senang bisa ngobrol tentang pekerjaan tim Anda.
+L2-001	latih	L2	pewawancara	rapi	Apa pengalaman Anda dengan MongoDB atau database NoSQL lainnya?
+L2-002	latih	L2	kandidat	rapi	Saya memakai MongoDB untuk menyimpan data sensor yang strukturnya sering berubah.
+L2-003	latih	L2	kandidat	lisan	Kalau datanya, eee, butuh relasi yang rumit, saya tetap pilih MySQL daripada NoSQL.
+L2-004	latih	L2	kandidat	rapi	Saya menambahkan unique index di kolom email supaya tidak ada akun ganda.
+L2-005	latih	L2	kandidat	rapi	Query laporan bulanan kami pindahkan ke read replica supaya database utama tidak terbebani.
+L2-006	latih	L2	kandidat	lisan	Waktu itu, hmm, deadlock-nya terjadi karena dua proses mengunci tabel dengan urutan yang berbeda.
+L2-007	latih	L2	kandidat	rapi	Saya membuat view di database supaya tim data bisa membaca laporan tanpa menyentuh tabel asli.
+L2-008	latih	L2	kandidat	rapi	Ukuran database kami sekitar 40 GB dan bertambah kira-kira 2 GB setiap bulan.
+L2-009	latih	L2	kandidat	lisan	Data lama kami arsipkan, eee, ke storage yang lebih murah setelah lewat 1 tahun.
+L2-010	latih	L2	pewawancara	rapi	Bagaimana Anda menangani pagination di API yang datanya sangat banyak?
+L2-011	latih	L2	kandidat	rapi	Saya memakai cursor pagination karena offset pagination makin lambat di halaman belakang.
+L2-012	latih	L2	kandidat	rapi	Setiap endpoint mengembalikan kode status HTTP yang jelas, misalnya 422 untuk validasi gagal.
+L2-013	latih	L2	kandidat	lisan	Endpoint upload file-nya, eee, kami batasi maksimal 10 MB per file.
+L2-014	latih	L2	kandidat	rapi	Untuk komunikasi antar service kami memakai REST, tapi untuk notifikasi kami memakai message broker.
+L2-015	latih	L2	kandidat	rapi	Saya pernah membuat GraphQL API supaya aplikasi mobile bisa mengambil data yang dibutuhkan saja.
+L2-016	latih	L2	kandidat	lisan	Jadi, eh, timeout ke API pihak ketiga itu kami set 5 detik, lalu dicoba ulang 3 kali.
+L2-017	latih	L2	kandidat	rapi	Background job untuk membuat file PDF berjalan di worker terpisah supaya web server tetap responsif.
+L2-018	latih	L2	pewawancara	rapi	Bagaimana proses deployment di tim Anda sebelumnya, dari kode selesai sampai rilis?
+L2-019	latih	L2	kandidat	rapi	Kami memakai GitHub Actions untuk build, test, dan deploy secara otomatis.
+L2-020	latih	L2	kandidat	lisan	Rilis ke production biasanya, eee, hari Selasa atau Rabu, tidak pernah hari Jumat sore.
+L2-021	latih	L2	kandidat	rapi	Kami memakai blue green deployment supaya pengguna tidak merasakan downtime saat rilis.
+L2-022	latih	L2	kandidat	rapi	Konfigurasi server ditulis dengan Terraform, jadi lingkungan staging dan production sama persis.
+L2-023	latih	L2	kandidat	lisan	Pernah, hmm, sekali rilis gagal dan kami harus rollback dalam waktu 10 menit.
+L2-024	latih	L2	kandidat	rapi	Saya juga mengatur Kubernetes untuk menambah jumlah pod secara otomatis saat traffic naik.
+L2-025	latih	L2	kandidat	rapi	Health check endpoint kami dicek setiap 30 detik oleh load balancer.
+L2-026	latih	L2	pewawancara	rapi	Jenis test apa yang menurut Anda paling penting?
+L2-027	latih	L2	kandidat	rapi	Menurut saya integration test paling penting karena banyak bug muncul di batas antar komponen.
+L2-028	latih	L2	kandidat	lisan	End to end test kami, eee, jalan pakai Playwright setiap malam.
+L2-029	latih	L2	kandidat	rapi	Saya pernah menemukan test yang kadang lulus dan kadang gagal karena bergantung pada urutan data.
+L2-030	latih	L2	kandidat	rapi	Load test dengan k6 menunjukkan server kami mulai lambat di sekitar 500 request per detik.
+L2-031	latih	L2	kandidat	lisan	Test-nya, eh, maksud saya test suite-nya, jalan sekitar 8 menit di CI.
+L2-032	latih	L2	kandidat	rapi	Data dummy untuk test dibuat dengan factory supaya setiap test punya data yang bersih.
+L2-033	latih	L2	pewawancara	rapi	Bagaimana Anda mencari penyebab error yang hanya terjadi di production?
+L2-034	latih	L2	kandidat	rapi	Langkah pertama saya adalah membaca log di sekitar waktu error dan mencari request ID yang sama.
+L2-035	latih	L2	kandidat	lisan	Error 500 itu, eee, ternyata muncul karena disk server penuh oleh file log lama.
+L2-036	latih	L2	kandidat	rapi	Saya pernah menelusuri bug yang membuat stok produk menjadi minus karena dua pesanan masuk bersamaan.
+L2-037	latih	L2	kandidat	rapi	Kami menyelesaikannya dengan locking di level database saat stok dikurangi.
+L2-038	latih	L2	kandidat	lisan	Kadang, hmm, masalahnya bukan di kode kita, tapi di library yang versinya baru naik.
+L2-039	latih	L2	kandidat	rapi	Sejak itu kami mengunci versi dependency dan memperbaruinya secara terjadwal.
+L2-040	latih	L2	kandidat	lisan	Saya mengaktifkan, eee, tracing supaya bisa melihat service mana yang paling lama merespons.
+L2-041	latih	L2	pewawancara	rapi	Bagaimana biasanya Anda menerima kritik dari rekan kerja saat code review?
+L2-042	latih	L2	kandidat	rapi	Saya menganggap komentar reviewer sebagai kesempatan belajar, bukan serangan pribadi.
+L2-043	latih	L2	kandidat	lisan	Kalau saya kurang setuju, eee, saya jelaskan alasan saya dan kami cari jalan tengah.
+L2-044	latih	L2	kandidat	rapi	Di tim kami setiap pull request butuh minimal 2 approval sebelum boleh di-merge.
+L2-045	latih	L2	kandidat	rapi	Saya pernah memimpin tim kecil berisi 4 orang untuk membangun fitur loyalty point.
+L2-046	latih	L2	kandidat	lisan	Komunikasi dengan product manager, eee, biasanya lewat Slack dan meeting mingguan.
+L2-047	latih	L2	kandidat	rapi	Saya membiasakan menulis dokumen desain singkat sebelum mulai mengerjakan fitur yang besar.
+L2-048	latih	L2	kandidat	rapi	Kalau deadline tidak realistis, saya sampaikan risikonya sejak awal beserta pilihan pengurangan scope.
+L2-049	latih	L2	pewawancara	rapi	Apakah Anda pernah membuat aplikasi mobile, dan kalau pernah, memakai teknologi apa?
+L2-050	latih	L2	kandidat	rapi	Saya membuat aplikasi Android dengan Flutter untuk pemesanan katering kantor.
+L2-051	latih	L2	kandidat	lisan	Aplikasinya sudah, eee, diunduh sekitar 10 ribu kali di Play Store.
+L2-052	latih	L2	kandidat	rapi	Notifikasi push kami kirim lewat Firebase Cloud Messaging.
+L2-053	latih	L2	kandidat	rapi	Saya menyimpan data penting secara lokal supaya aplikasi tetap bisa dibuka saat sinyal lemah.
+L2-054	latih	L2	kandidat	lisan	Ukuran aplikasinya awalnya 60 MB, eh, setelah dioptimasi jadi sekitar 25 MB.
+L2-055	latih	L2	pewawancara	rapi	Apa yang Anda lakukan untuk melindungi data pribadi pengguna?
+L2-056	latih	L2	kandidat	rapi	Data sensitif seperti nomor KTP kami enkripsi sebelum disimpan di database.
+L2-057	latih	L2	kandidat	rapi	Akses ke database production hanya diberikan kepada 2 orang dan semuanya tercatat.
+L2-058	latih	L2	kandidat	lisan	Kami juga, eee, menyesuaikan sistem dengan Undang-Undang Pelindungan Data Pribadi.
+L2-059	latih	L2	kandidat	rapi	Semua koneksi ke server wajib memakai HTTPS dengan sertifikat yang diperbarui otomatis.
+L2-060	latih	L2	kandidat	rapi	Saya mengaktifkan autentikasi dua faktor untuk semua akun admin.
+L2-061	latih	L2	pewawancara	rapi	Apakah Anda punya pengalaman dengan data analytics atau membuat laporan untuk tim bisnis?
+L2-062	latih	L2	kandidat	rapi	Saya pernah membangun pipeline ETL yang memindahkan data transaksi ke data warehouse setiap malam.
+L2-063	latih	L2	kandidat	lisan	Dashboard-nya kami buat di, eee, Metabase supaya tim bisnis bisa membuat laporan sendiri.
+L2-064	latih	L2	kandidat	rapi	Saya cukup lancar menulis SQL untuk analisis, termasuk window function dan subquery.
+L2-065	latih	L2	kandidat	lisan	Datanya kira-kira, hmm, 20 juta baris per bulan, jadi kami proses per batch.
+L2-066	latih	L2	pewawancara	rapi	Boleh saya tahu kenapa Anda ingin pindah dari pekerjaan Anda yang sekarang?
+L2-067	latih	L2	kandidat	rapi	Saya ingin bekerja di tim yang lebih besar supaya bisa belajar dari engineer yang lebih senior.
+L2-068	latih	L2	kandidat	lisan	Gaji yang saya harapkan, eee, sekitar 9 juta, tapi masih bisa dibicarakan.
+L2-069	latih	L2	kandidat	rapi	Saya punya sertifikasi AWS Cloud Practitioner yang saya ambil tahun lalu.
+L2-070	latih	L2	kandidat	rapi	Saya terbiasa bekerja remote dan selalu memperbarui status pekerjaan di Jira.
+L2-071	latih	L2	kandidat	lisan	Masa notice di kantor saya sekarang, eee, 30 hari.
+L2-072	latih	L2	pewawancara	rapi	Bagaimana cara Anda belajar teknologi baru yang belum pernah Anda pakai sebelumnya?
+L2-073	latih	L2	kandidat	rapi	Biasanya saya membaca dokumentasi resminya lalu membuat proyek kecil untuk mencobanya.
+L2-074	latih	L2	kandidat	lisan	Akhir-akhir ini saya lagi belajar, eee, Go untuk membuat service yang lebih ringan.
+L2-075	latih	L2	kandidat	rapi	Saya juga rutin menulis catatan teknis di blog pribadi supaya pemahaman saya lebih rapi.
+L3-001	latih	L3	pewawancara	rapi	Bisa jelaskan struktur database yang pernah Anda rancang?
+L3-002	latih	L3	kandidat	rapi	Saya merancang database untuk aplikasi klinik dengan tabel pasien, dokter, jadwal, dan rekam medis.
+L3-003	latih	L3	kandidat	lisan	Setiap jadwal, eee, terhubung ke satu dokter dan satu ruangan lewat foreign key.
+L3-004	latih	L3	kandidat	rapi	Kolom yang sering dicari seperti nomor rekam medis saya beri index.
+L3-005	latih	L3	kandidat	rapi	Saya memakai soft delete supaya data yang terhapus masih bisa dipulihkan.
+L3-006	latih	L3	kandidat	lisan	Normalisasinya kami buat sampai bentuk ketiga, hmm, tapi untuk laporan kami sengaja denormalisasi sedikit.
+L3-007	latih	L3	kandidat	rapi	Stored procedure kami hindari karena sulit di-review dan di-test.
+L3-008	latih	L3	kandidat	rapi	Untuk data yang berubah sangat cepat, seperti posisi kurir, kami simpan di Redis.
+L3-009	latih	L3	kandidat	lisan	Koneksi database-nya, eee, dibatasi 100 koneksi, jadi kami pakai connection pool.
+L3-010	latih	L3	pewawancara	rapi	Bagaimana Anda menangani integrasi dengan sistem pihak ketiga?
+L3-011	latih	L3	kandidat	rapi	Saya pernah mengintegrasikan aplikasi toko online dengan API ongkos kirim dari 3 ekspedisi.
+L3-012	latih	L3	kandidat	lisan	Dokumentasi API mereka, eee, kurang lengkap, jadi kami banyak bertanya lewat email.
+L3-013	latih	L3	kandidat	rapi	Hasil dari API ongkos kirim kami cache selama 1 jam karena tarifnya jarang berubah.
+L3-014	latih	L3	kandidat	rapi	Saya membungkus setiap integrasi dalam satu class adapter supaya mudah diganti.
+L3-015	latih	L3	kandidat	lisan	Kalau API mereka mati, eh, aplikasi kami tetap jalan dengan tarif terakhir yang tersimpan.
+L3-016	latih	L3	kandidat	rapi	Untuk pembayaran kami memakai Midtrans dan menyimpan setiap notifikasi yang masuk.
+L3-017	latih	L3	kandidat	rapi	Signature dari setiap webhook selalu kami verifikasi sebelum memproses datanya.
+L3-018	latih	L3	pewawancara	rapi	Seberapa jauh pengalaman Anda dengan Linux dan pengelolaan server sehari-hari?
+L3-019	latih	L3	kandidat	rapi	Saya sehari-hari memakai Ubuntu dan terbiasa mengatur Nginx sebagai reverse proxy.
+L3-020	latih	L3	kandidat	lisan	Saya bisa, eee, membaca log sistem dan mengecek proses yang memakan CPU terlalu tinggi.
+L3-021	latih	L3	kandidat	rapi	Saya menulis bash script untuk membersihkan file sementara yang lebih lama dari 7 hari.
+L3-022	latih	L3	kandidat	rapi	Sertifikat SSL di semua server kami diperbarui otomatis memakai Certbot setiap 3 bulan.
+L3-023	latih	L3	kandidat	lisan	Server lama kami, hmm, masih CentOS, jadi kami migrasi pelan-pelan ke Ubuntu.
+L3-024	latih	L3	kandidat	rapi	Saya mengatur firewall supaya port database hanya bisa diakses dari jaringan internal.
+L3-025	latih	L3	kandidat	lisan	Waktu respons rata-rata API kami, eee, turun dari 900 milidetik menjadi 250 milidetik setelah optimasi.
+L3-026	latih	L3	pewawancara	rapi	Bagaimana cara Anda menulis kode yang mudah dirawat oleh anggota tim yang lain?
+L3-027	latih	L3	kandidat	rapi	Saya memberi nama fungsi yang jelas supaya orang lain tidak perlu membaca isinya untuk paham.
+L3-028	latih	L3	kandidat	lisan	Fungsi yang, eee, lebih dari 50 baris biasanya saya pecah jadi beberapa bagian.
+L3-029	latih	L3	kandidat	rapi	Saya mengikuti prinsip single responsibility supaya setiap class hanya punya satu tugas.
+L3-030	latih	L3	kandidat	rapi	Refactoring saya lakukan sedikit demi sedikit, selalu dengan test yang sudah lulus.
+L3-031	latih	L3	kandidat	lisan	Kode lama di kantor saya itu, eee, tidak ada test sama sekali, jadi kami tulis test dulu sebelum mengubahnya.
+L3-032	latih	L3	kandidat	rapi	Kami memakai linter dan formatter otomatis supaya gaya penulisan kode seragam.
+L3-033	latih	L3	pewawancara	rapi	Pernahkah Anda menangani sistem yang tiba-tiba menjadi sangat lambat saat dipakai banyak orang?
+L3-034	latih	L3	kandidat	rapi	Pernah, waktu ada promo besar traffic naik 5 kali lipat dalam 1 jam.
+L3-035	latih	L3	kandidat	lisan	Kami, eee, langsung menambah server dan mengaktifkan cache untuk halaman produk.
+L3-036	latih	L3	kandidat	rapi	Setelah itu kami membuat antrean untuk proses checkout supaya database tidak kewalahan.
+L3-037	latih	L3	kandidat	rapi	Dari kejadian itu kami belajar untuk selalu melakukan load test sebelum promo besar.
+L3-038	latih	L3	kandidat	lisan	CPU database-nya sempat, hmm, 100 persen selama sekitar 20 menit.
+L3-039	latih	L3	kandidat	rapi	Ternyata ada query yang lupa diberi batas dan mengambil semua data sekaligus.
+L3-040	latih	L3	kandidat	rapi	Sekarang setiap query baru wajib dicek oleh satu engineer senior.
+L3-041	latih	L3	pewawancara	rapi	Bagaimana cara Anda menyampaikan hal teknis ke orang non-teknis?
+L3-042	latih	L3	kandidat	rapi	Saya memakai perumpamaan sehari-hari, misalnya API saya jelaskan seperti pelayan di restoran.
+L3-043	latih	L3	kandidat	lisan	Saya, eee, menghindari istilah teknis dan langsung bicara soal dampaknya ke pengguna.
+L3-044	latih	L3	kandidat	rapi	Laporan mingguan ke manajemen saya buat singkat, dengan angka dan grafik sederhana.
+L3-045	latih	L3	kandidat	rapi	Saya pernah melatih tim customer service memakai fitur dashboard baru selama 2 sesi.
+L3-046	latih	L3	kandidat	lisan	Kalau mereka masih bingung, eh, saya buatkan video tutorial pendek.
+L3-047	latih	L3	kandidat	rapi	Menurut saya developer yang baik juga harus bisa mendengarkan kebutuhan pengguna.
+L3-048	latih	L3	kandidat	rapi	Saya biasa mencatat setiap keputusan penting di Confluence supaya tidak hilang.
+L3-049	latih	L3	pewawancara	rapi	Apa pengalaman Anda dalam membuat desain antarmuka yang nyaman dipakai pengguna?
+L3-050	latih	L3	kandidat	rapi	Saya bekerja sama dengan desainer di Figma dan mengubah desainnya menjadi komponen yang bisa dipakai ulang.
+L3-051	latih	L3	kandidat	lisan	Komponen tombol dan form, eee, kami kumpulkan di satu design system.
+L3-052	latih	L3	kandidat	rapi	Saya selalu mengecek kontras warna supaya teks tetap terbaca oleh pengguna dengan gangguan penglihatan.
+L3-053	latih	L3	kandidat	rapi	Kami melakukan uji coba ke 5 pengguna sebelum fitur baru dirilis.
+L3-054	latih	L3	kandidat	lisan	Hasilnya, hmm, banyak pengguna tidak menemukan tombol simpan, jadi posisinya kami pindah.
+L3-055	latih	L3	pewawancara	rapi	Bagaimana tim Anda mengelola rahasia seperti password server dan API key?
+L3-056	latih	L3	kandidat	rapi	Password dan token kami simpan di secret manager, bukan di file konfigurasi.
+L3-057	latih	L3	kandidat	lisan	Setiap 90 hari, eee, semua token akses kami ganti.
+L3-058	latih	L3	kandidat	rapi	Akun yang sudah tidak dipakai langsung dinonaktifkan saat karyawan keluar.
+L3-059	latih	L3	kandidat	rapi	Saya pernah menemukan token yang bocor di repository publik dan langsung mencabutnya.
+L3-060	latih	L3	kandidat	lisan	Sejak itu, eh, kami pasang pengecekan otomatis yang mencari rahasia di setiap commit.
+L3-061	latih	L3	pewawancara	rapi	Apakah Anda pernah memakai model AI di aplikasi?
+L3-062	latih	L3	kandidat	rapi	Saya pernah memakai API model bahasa untuk meringkas ulasan pelanggan secara otomatis.
+L3-063	latih	L3	kandidat	lisan	Biayanya, eee, kami pantau per bulan karena dihitung berdasarkan jumlah token.
+L3-064	latih	L3	kandidat	rapi	Hasil ringkasan selalu dicek manusia dulu sebelum ditampilkan ke klien.
+L3-065	latih	L3	kandidat	rapi	Saya juga pernah memakai model speech to text untuk membuat transkrip rapat.
+L3-066	latih	L3	pewawancara	rapi	Coba ceritakan satu proyek yang paling Anda banggakan sejauh ini.
+L3-067	latih	L3	kandidat	rapi	Saya membangun sistem antrean online untuk puskesmas yang dipakai sekitar 300 pasien per hari.
+L3-068	latih	L3	kandidat	lisan	Waktu tunggu pasien, eee, turun dari 2 jam menjadi sekitar 40 menit.
+L3-069	latih	L3	kandidat	rapi	Proyek itu saya kerjakan bersama 3 teman dalam waktu 4 bulan.
+L3-070	latih	L3	kandidat	lisan	Yang paling susah itu, hmm, meyakinkan petugasnya untuk mau pakai sistem baru.
+L3-071	latih	L3	kandidat	rapi	Saya berharap gaji di posisi ini sekitar 11 juta rupiah per bulan.
+L3-072	latih	L3	pewawancara	rapi	Menurut Anda sendiri, apa kelemahan terbesar Anda dalam bekerja di sebuah tim?
+L3-073	latih	L3	kandidat	rapi	Saya kadang terlalu lama menyempurnakan kode, jadi sekarang saya membatasi waktu untuk setiap tugas.
+L3-074	latih	L3	kandidat	lisan	Saya juga, eee, masih belajar untuk lebih berani bicara di meeting besar.
+L3-075	latih	L3	kandidat	rapi	Terima kasih, saya tunggu kabar selanjutnya dari tim HR.
+L4-001	latih	L4	pewawancara	rapi	Database apa yang paling sering Anda pakai dan kenapa?
+L4-002	latih	L4	kandidat	rapi	Saya paling sering memakai MySQL karena dukungannya luas dan tim saya sudah terbiasa.
+L4-003	latih	L4	kandidat	lisan	Untuk pencarian teks, eee, kami pakai Elasticsearch karena pencarian biasa di MySQL terlalu lambat.
+L4-004	latih	L4	kandidat	rapi	Saya membuat seeder supaya setiap developer punya data contoh yang sama di laptop masing-masing.
+L4-005	latih	L4	kandidat	rapi	Perubahan skema besar kami jalankan di luar jam sibuk, biasanya setelah jam 10 malam.
+L4-006	latih	L4	kandidat	lisan	Tabel user kami, hmm, punya 25 kolom, jadi sebagian kami pindah ke tabel profil.
+L4-007	latih	L4	kandidat	rapi	Saya memakai UUID sebagai primary key di tabel yang datanya dibagikan ke sistem lain.
+L4-008	latih	L4	kandidat	rapi	Untuk audit, setiap perubahan data penting dicatat siapa yang mengubah dan kapan.
+L4-009	latih	L4	kandidat	lisan	Restore dari backup itu, eee, kami latih tiap 3 bulan supaya yakin backup-nya benar-benar bisa dipakai.
+L4-010	latih	L4	pewawancara	rapi	Bagaimana Anda menangani proses yang membutuhkan waktu lama di aplikasi web?
+L4-011	latih	L4	kandidat	rapi	Proses impor file Excel dengan ribuan baris kami jalankan di background job.
+L4-012	latih	L4	kandidat	lisan	Pengguna dapat, eee, notifikasi kalau impornya sudah selesai atau gagal.
+L4-013	latih	L4	kandidat	rapi	Saya memakai Laravel Horizon untuk memantau antrean dan job yang gagal.
+L4-014	latih	L4	kandidat	rapi	Job yang gagal dicoba ulang maksimal 3 kali dengan jeda yang makin lama.
+L4-015	latih	L4	kandidat	lisan	Pernah, eh, satu job terjebak loop dan mengirim email yang sama ke pelanggan berkali-kali.
+L4-016	latih	L4	kandidat	rapi	Sejak itu setiap job punya batas waktu dan pengecekan supaya tidak jalan dua kali.
+L4-017	latih	L4	kandidat	rapi	Untuk fitur chat kami memakai WebSocket supaya pesan muncul tanpa perlu refresh.
+L4-018	latih	L4	pewawancara	rapi	Bagaimana tim Anda memantau kesehatan aplikasi setelah fitur baru dirilis ke pengguna?
+L4-019	latih	L4	kandidat	rapi	Kami punya dashboard yang menampilkan jumlah error, waktu respons, dan jumlah pengguna aktif.
+L4-020	latih	L4	kandidat	lisan	Kalau error rate-nya, eee, di atas 1 persen, tim on call langsung dapat notifikasi.
+L4-021	latih	L4	kandidat	rapi	Saya pernah ikut jadwal on call bergantian setiap minggu dengan 4 engineer lain.
+L4-022	latih	L4	kandidat	rapi	Target uptime layanan kami 99,9 persen setiap bulan.
+L4-023	latih	L4	kandidat	lisan	Bulan lalu kami cuma, hmm, 99,5 persen karena gangguan dari penyedia cloud.
+L4-024	latih	L4	kandidat	rapi	Setiap alarm yang tidak penting kami hapus supaya tim tidak terbiasa mengabaikan notifikasi.
+L4-025	latih	L4	kandidat	lisan	Saya membuat, eee, runbook berisi langkah perbaikan untuk masalah yang sering terjadi.
+L4-026	latih	L4	pewawancara	rapi	Apakah Anda pernah menggunakan metode TDD, dan bagaimana pengalaman Anda dengan metode itu?
+L4-027	latih	L4	kandidat	rapi	Pernah, terutama untuk kode perhitungan diskon yang aturannya banyak.
+L4-028	latih	L4	kandidat	lisan	Awalnya terasa, eee, lambat, tapi bug di bagian itu jadi jauh berkurang.
+L4-029	latih	L4	kandidat	rapi	Saya menulis test untuk kasus batas, misalnya diskon tepat di nilai minimum belanja.
+L4-030	latih	L4	kandidat	rapi	Kami memisahkan test yang cepat dan lambat supaya developer bisa menjalankan yang cepat setiap saat.
+L4-031	latih	L4	kandidat	lisan	Test di CI kami sempat, eh, gagal terus karena jam server beda dengan jam lokal.
+L4-032	latih	L4	kandidat	rapi	Snapshot test kami pakai untuk memastikan tampilan komponen tidak berubah tanpa sengaja.
+L4-033	latih	L4	pewawancara	rapi	Coba ceritakan satu saat ketika Anda membuat kesalahan di pekerjaan dan apa yang Anda lakukan.
+L4-034	latih	L4	kandidat	rapi	Saya pernah menjalankan perintah update tanpa kondisi dan mengubah ratusan data sekaligus.
+L4-035	latih	L4	kandidat	lisan	Untungnya, eee, ada backup dari 1 jam sebelumnya, jadi datanya bisa dipulihkan.
+L4-036	latih	L4	kandidat	rapi	Saya langsung melapor ke atasan dan menulis langkah pencegahan supaya tidak terulang.
+L4-037	latih	L4	kandidat	rapi	Sekarang setiap perubahan data manual di production harus lewat review orang kedua.
+L4-038	latih	L4	kandidat	lisan	Dari situ saya, hmm, belajar untuk tidak panik dan jujur sejak awal.
+L4-039	latih	L4	kandidat	rapi	Menurut saya kesalahan yang disembunyikan jauh lebih berbahaya daripada kesalahannya sendiri.
+L4-040	latih	L4	kandidat	rapi	Kami juga membuat akses baca saja untuk sebagian besar akun database.
+L4-041	latih	L4	pewawancara	rapi	Bagaimana Anda mengatur prioritas kalau banyak tugas datang bersamaan?
+L4-042	latih	L4	kandidat	rapi	Saya mengurutkan tugas berdasarkan dampaknya ke pengguna dan tenggat waktunya.
+L4-043	latih	L4	kandidat	lisan	Bug yang memblokir transaksi, eee, selalu saya kerjakan duluan.
+L4-044	latih	L4	kandidat	rapi	Saya menyampaikan ke tim kalau ada tugas yang harus ditunda supaya tidak ada yang kaget.
+L4-045	latih	L4	kandidat	rapi	Saya memakai papan Kanban untuk melihat tugas yang sedang dikerjakan dan yang tertahan.
+L4-046	latih	L4	kandidat	lisan	Kadang, eh, saya juga bilang tidak kalau memang sudah terlalu banyak pekerjaan.
+L4-047	latih	L4	kandidat	rapi	Rapat yang tidak jelas tujuannya biasanya saya tanyakan dulu agendanya.
+L4-048	latih	L4	kandidat	rapi	Saya menyisihkan 2 jam setiap pagi untuk fokus menulis kode tanpa gangguan.
+L4-049	latih	L4	pewawancara	rapi	Seberapa paham Anda tentang performa halaman web dan cara mengukurnya?
+L4-050	latih	L4	kandidat	rapi	Saya memantau Core Web Vitals dan berusaha menjaga waktu muat halaman di bawah 2 detik.
+L4-051	latih	L4	kandidat	lisan	Ukuran bundle JavaScript-nya, eee, kami kecilkan dengan code splitting.
+L4-052	latih	L4	kandidat	rapi	Aset statis kami simpan di CDN supaya lebih cepat diakses dari luar Jakarta.
+L4-053	latih	L4	kandidat	rapi	Saya memakai Lighthouse untuk mengecek performa sebelum dan sesudah perubahan.
+L4-054	latih	L4	kandidat	lisan	Skor Lighthouse kami naik dari, hmm, 55 menjadi 90 setelah gambar diubah ke format WebP.
+L4-055	latih	L4	pewawancara	rapi	Apa yang Anda ketahui tentang OWASP dan bagaimana Anda memakainya dalam pekerjaan?
+L4-056	latih	L4	kandidat	rapi	OWASP Top 10 adalah daftar celah keamanan yang paling sering ditemukan di aplikasi web.
+L4-057	latih	L4	kandidat	lisan	Kami pernah, eee, menemukan celah XSS di kolom komentar dan langsung memperbaikinya dengan escaping.
+L4-058	latih	L4	kandidat	rapi	Token CSRF kami pakai di setiap form yang mengubah data.
+L4-059	latih	L4	kandidat	rapi	Upload file kami batasi jenisnya dan disimpan di luar folder publik.
+L4-060	latih	L4	kandidat	lisan	Penetration test-nya, eh, dilakukan pihak luar setahun sekali.
+L4-061	latih	L4	pewawancara	rapi	Apakah Anda punya pengalaman dengan pengolahan data teks?
+L4-062	latih	L4	kandidat	rapi	Saya pernah membuat fitur pencarian yang tetap bisa menemukan produk walaupun ejaannya salah.
+L4-063	latih	L4	kandidat	lisan	Kami memakai, eee, embedding untuk mencari dokumen yang maknanya mirip.
+L4-064	latih	L4	kandidat	rapi	Data teks dari pengguna kami bersihkan dulu, misalnya menghapus emoji dan spasi berlebih.
+L4-065	latih	L4	kandidat	rapi	Model sentimen sederhana kami dipakai untuk menandai ulasan yang perlu segera dibalas.
+L4-066	latih	L4	pewawancara	rapi	Menurut Anda, mengapa kami harus memilih Anda dibanding kandidat yang lain?
+L4-067	latih	L4	kandidat	rapi	Saya punya pengalaman membangun sistem dari nol sampai dipakai ribuan pengguna.
+L4-068	latih	L4	kandidat	lisan	Saya juga, eee, terbiasa kerja dengan tim lintas fungsi seperti desain dan bisnis.
+L4-069	latih	L4	kandidat	rapi	Saya cepat belajar dan tidak ragu bertanya kalau ada yang belum saya pahami.
+L4-070	latih	L4	kandidat	rapi	Untuk gaji, saya berharap sekitar 13 juta karena saya juga akan memegang server.
+L4-071	latih	L4	kandidat	lisan	Kalau diterima, saya, saya siap mulai tanggal 1 bulan depan.
+L4-072	latih	L4	pewawancara	rapi	Kalau Anda bergabung, apa yang Anda harapkan dari atasan langsung Anda nanti?
+L4-073	latih	L4	kandidat	rapi	Saya berharap atasan memberi umpan balik secara rutin, tidak hanya saat penilaian tahunan.
+L4-074	latih	L4	kandidat	lisan	Saya suka, eee, atasan yang memberi kepercayaan tapi tetap mudah dihubungi.
+L4-075	latih	L4	kandidat	rapi	Baik, terima kasih banyak atas kesempatannya hari ini.
+U-001	uji	U	pewawancara	rapi	Boleh ceritakan proyek backend terakhir yang Anda kerjakan?
+U-002	uji	U	kandidat	rapi	Proyek terakhir saya adalah sistem reservasi lapangan futsal dengan Laravel dan PostgreSQL.
+U-003	uji	U	kandidat	lisan	Setiap pemesanan, eee, dicek dulu supaya tidak ada dua orang yang memesan jam yang sama.
+U-004	uji	U	kandidat	rapi	Kami menambahkan index gabungan di kolom lapangan dan tanggal supaya pengecekan jadwal cepat.
+U-005	uji	U	kandidat	rapi	Database-nya kami backup setiap 6 jam ke penyimpanan cloud.
+U-006	uji	U	kandidat	lisan	Waktu itu, hmm, migration-nya gagal di tengah jalan, jadi kami harus memperbaiki tabelnya manual.
+U-007	uji	U	kandidat	rapi	Saya memakai transaction supaya pembayaran dan pemesanan selalu tersimpan bersamaan.
+U-008	uji	U	pewawancara	rapi	Bagaimana Anda mendesain API untuk dipakai banyak klien?
+U-009	uji	U	kandidat	rapi	Saya menyediakan dokumentasi OpenAPI dan contoh request untuk setiap endpoint.
+U-010	uji	U	kandidat	lisan	Token aksesnya, eee, berlaku 1 jam dan bisa diperbarui dengan refresh token.
+U-011	uji	U	kandidat	rapi	Kalau validasi gagal, API mengembalikan pesan error per kolom supaya mudah ditampilkan di form.
+U-012	uji	U	kandidat	rapi	Notifikasi ke aplikasi mobile dikirim lewat queue supaya tidak memperlambat request utama.
+U-013	uji	U	kandidat	lisan	Endpoint pencarian kami, eh, maksud saya endpoint daftar produk, kami cache selama 10 menit.
+U-014	uji	U	kandidat	rapi	Integrasi dengan payment gateway kami uji dulu di mode sandbox sebelum dibuka ke publik.
+U-015	uji	U	pewawancara	rapi	Bagaimana pengalaman Anda memakai layanan cloud untuk menjalankan aplikasi?
+U-016	uji	U	kandidat	rapi	Saya pernah memakai Google Cloud untuk menjalankan aplikasi di Cloud Run dan database di Cloud SQL.
+U-017	uji	U	kandidat	lisan	Biaya cloud-nya, eee, sempat membengkak karena ada server yang lupa dimatikan.
+U-018	uji	U	kandidat	rapi	Sekarang kami memasang batas anggaran dan notifikasi kalau biaya melewati 80 persen.
+U-019	uji	U	kandidat	rapi	Image Docker kami simpan di registry pribadi dan diberi tag sesuai nomor versi.
+U-020	uji	U	kandidat	lisan	Deploy-nya, hmm, sekarang cuma butuh sekitar 7 menit dari merge sampai live.
+U-021	uji	U	kandidat	rapi	Saya mengatur autoscaling supaya jumlah server bertambah saat CPU di atas 70 persen.
+U-022	uji	U	pewawancara	rapi	Bagaimana cara Anda memastikan kualitas kode seluruh anggota tim tetap terjaga?
+U-023	uji	U	kandidat	rapi	Setiap pull request harus lulus test otomatis dan dicek minimal satu orang.
+U-024	uji	U	kandidat	lisan	Saya, eee, biasanya memberi komentar review dalam bentuk pertanyaan, bukan perintah.
+U-025	uji	U	kandidat	rapi	Kami memakai feature flag supaya fitur baru bisa dimatikan tanpa harus rollback.
+U-026	uji	U	kandidat	rapi	Unit test untuk modul pembayaran kami wajib mencakup semua kemungkinan status transaksi.
+U-027	uji	U	kandidat	lisan	Test yang flaky, eh, kami tandai dulu dan diperbaiki di sprint berikutnya.
+U-028	uji	U	pewawancara	rapi	Apakah Anda pernah menangani insiden besar di production, dan apa yang terjadi?
+U-029	uji	U	kandidat	rapi	Pernah, layanan login kami mati selama 45 menit karena sertifikat SSL kedaluwarsa.
+U-030	uji	U	kandidat	lisan	Kami, eee, langsung memperbarui sertifikatnya dan memasang pengingat otomatis.
+U-031	uji	U	kandidat	rapi	Saya juga menemukan memory leak di worker yang membuat server restart setiap 6 jam.
+U-032	uji	U	kandidat	rapi	Log dan metrik membantu kami melihat bahwa masalahnya mulai setelah library tertentu diperbarui.
+U-033	uji	U	kandidat	lisan	Debugging-nya, hmm, makan waktu 2 hari karena error-nya tidak muncul di laptop.
+U-034	uji	U	kandidat	rapi	Setelah selesai, kami menulis postmortem dan membagikannya ke seluruh tim engineering.
+U-035	uji	U	pewawancara	rapi	Bagaimana Anda bekerja dalam tim yang anggotanya tersebar di beberapa kota?
+U-036	uji	U	kandidat	rapi	Kami memakai standup tertulis di Slack supaya anggota yang beda zona waktu tetap bisa ikut.
+U-037	uji	U	kandidat	lisan	Keputusan penting, eee, selalu kami tulis supaya yang tidak ikut meeting tetap tahu.
+U-038	uji	U	kandidat	rapi	Sprint planning dan retrospective tetap kami lakukan lewat video call setiap 2 minggu.
+U-039	uji	U	kandidat	rapi	Saya pernah membimbing developer junior lewat sesi pair programming 2 kali seminggu.
+U-040	uji	U	kandidat	lisan	Kalau ada salah paham, eh, saya lebih suka langsung telepon daripada balas chat panjang.
+U-041	uji	U	pewawancara	rapi	Bagaimana cara Anda membangun tampilan yang tetap rapi di HP maupun di laptop?
+U-042	uji	U	kandidat	rapi	Saya memakai pendekatan mobile first, baru menyesuaikan tampilan untuk layar yang lebih lebar.
+U-043	uji	U	kandidat	lisan	Komponen tabelnya, eee, kami ubah jadi kartu kalau dibuka di HP.
+U-044	uji	U	kandidat	rapi	Saya menguji tampilan di Chrome, Safari, dan Firefox sebelum rilis.
+U-045	uji	U	kandidat	rapi	Waktu muat halaman utama kami turun menjadi 1,5 detik setelah gambarnya dikompres.
+U-046	uji	U	pewawancara	rapi	Langkah apa yang Anda ambil untuk mencegah kebocoran data?
+U-047	uji	U	kandidat	rapi	Kami mengenkripsi kolom yang berisi nomor telepon dan alamat pelanggan.
+U-048	uji	U	kandidat	lisan	Log aplikasi, eee, tidak boleh mencatat password atau nomor kartu.
+U-049	uji	U	kandidat	rapi	Hak akses setiap karyawan disesuaikan dengan kebutuhan pekerjaannya saja.
+U-050	uji	U	kandidat	rapi	Kami memakai rate limit di halaman login untuk mencegah serangan brute force.
+U-051	uji	U	kandidat	lisan	Waktu itu, hmm, ada percobaan login ribuan kali dari satu alamat IP dalam semalam.
+U-052	uji	U	pewawancara	rapi	Apakah Anda pernah memakai machine learning untuk menyelesaikan masalah bisnis yang nyata?
+U-053	uji	U	kandidat	rapi	Saya membuat model sederhana untuk memprediksi jumlah pesanan harian di sebuah restoran.
+U-054	uji	U	kandidat	lisan	Datanya cuma, eee, 2 tahun penjualan, jadi kami tambahkan informasi hari libur.
+U-055	uji	U	kandidat	rapi	Hasil prediksinya dipakai untuk menentukan jumlah bahan yang dibeli setiap pagi.
+U-056	uji	U	kandidat	rapi	Model itu kami latih ulang setiap bulan dengan data penjualan terbaru.
+U-057	uji	U	kandidat	lisan	Error prediksinya, eh, sekitar 12 persen, masih lebih baik daripada perkiraan manual.
+U-058	uji	U	pewawancara	rapi	Kalau boleh tahu, berapa ekspektasi gaji Anda untuk posisi ini?
+U-059	uji	U	kandidat	rapi	Ekspektasi gaji saya 9,5 juta per bulan, belum termasuk tunjangan.
+U-060	uji	U	kandidat	lisan	Tapi, eee, saya lebih mementingkan kesempatan belajar dan jenjang karier yang jelas.
+U-061	uji	U	kandidat	rapi	Saya punya pengalaman kerja 4 tahun, 2 di antaranya sebagai backend developer.
+U-062	uji	U	kandidat	rapi	Saya bisa bergabung paling cepat pertengahan bulan depan.
+U-063	uji	U	pewawancara	rapi	Bagaimana cara Anda menjelaskan keterlambatan proyek kepada klien yang sedang kecewa?
+U-064	uji	U	kandidat	rapi	Saya menyampaikan penyebab keterlambatan dengan jujur beserta rencana penyelesaiannya.
+U-065	uji	U	kandidat	lisan	Biasanya saya, eee, tawarkan fitur yang paling penting dirilis lebih dulu.
+U-066	uji	U	kandidat	rapi	Saya mengirim laporan progres setiap Jumat supaya klien tidak terkejut di akhir proyek.
+U-067	uji	U	pewawancara	rapi	Apa yang membuat Anda tertarik dengan dunia data?
+U-068	uji	U	kandidat	rapi	Saya suka melihat bagaimana data yang berantakan bisa diubah menjadi keputusan yang jelas.
+U-069	uji	U	kandidat	lisan	Pertama kali, hmm, saya belajar SQL dari membuat laporan nilai di kampus.
+U-070	uji	U	kandidat	rapi	Sekarang saya sedang belajar membuat pipeline data dengan Airflow.
+U-071	uji	U	pewawancara	rapi	Sebelum kita tutup, apakah ada hal lain yang ingin Anda tanyakan kepada kami?
+U-072	uji	U	kandidat	rapi	Saya ingin tahu teknologi apa saja yang sedang dipakai tim ini sekarang.
+U-073	uji	U	kandidat	lisan	Lalu, eee, bagaimana cara perusahaan menilai kinerja developer?
+U-074	uji	U	kandidat	rapi	Apakah ada anggaran untuk pelatihan atau sertifikasi bagi karyawan?
+U-075	uji	U	kandidat	lisan	Baik, eh, terima kasih banyak, semoga kita bisa bekerja sama.

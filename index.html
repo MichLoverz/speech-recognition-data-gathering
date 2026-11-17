@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rekam Suara HireNote</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+    <div class="brand">Hire<span class="hl">Note</span> <span class="brand-sub">rekam suara</span></div>
+    <div id="whoami" class="whoami"></div>
+</header>
+
+<main class="sheet">
+
+<section id="v-loading" class="view">
+    <p class="pencil">Memuat…</p>
+</section>
+
+<section id="v-error" class="view" hidden>
+    <h1>Halaman ini belum bisa dipakai</h1>
+    <p id="error-text" class="notice notice-danger"></p>
+</section>
+
+<section id="v-setup" class="view" hidden>
+    <h1>Bantu kami melatih pengenal suara bahasa Indonesia</h1>
+    <p class="lead">Kamu akan membacakan <strong>75 kalimat pendek</strong> seputar wawancara kerja di bidang IT, satu per satu. Butuh sekitar 20 menit dan boleh dicicil. Rekaman tersimpan di browser ini sampai kamu mengunduh dan mengirimkannya.</p>
+
+    <div class="rule-block">
+        <h2>Sebelum mulai</h2>
+        <ul class="tight">
+            <li>Cari tempat yang cukup tenang. Mic HP atau laptop biasa sudah cukup.</li>
+            <li>Buka di Chrome atau Safari, <strong>bukan</strong> dari dalam WhatsApp/Instagram dan bukan mode penyamaran.</li>
+            <li>Rekam semuanya di perangkat dan browser yang sama.</li>
+        </ul>
+    </div>
+
+    <form id="setup-form" class="form" novalidate>
+        <div class="field">
+            <label for="f-kode">Kode pembicara</label>
+            <input id="f-kode" name="kode" autocomplete="off" spellcheck="false" placeholder="mis. P03" maxlength="12">
+            <p class="help">Kode dari orang yang memberimu tautan ini. Namamu tidak dicatat.</p>
+        </div>
+        <div class="field">
+            <label for="f-blok">Blok kalimat</label>
+            <select id="f-blok" name="blok"></select>
+            <p class="help">Juga dari orang yang memberimu tautan ini.</p>
+        </div>
+        <div class="field">
+            <label for="f-jk">Jenis kelamin</label>
+            <select id="f-jk" name="jenis_kelamin">
+                <option value="">Pilih…</option>
+                <option>Laki-laki</option>
+                <option>Perempuan</option>
+                <option>Tidak ingin menyebut</option>
+            </select>
+        </div>
+        <div class="field">
+            <label for="f-daerah">Daerah asal atau logat <span class="opt">(boleh dikosongkan)</span></label>
+            <input id="f-daerah" name="daerah" maxlength="60" placeholder="mis. Jakarta, Jawa Tengah, Medan">
+            <p class="help">Membantu kami melihat apakah model lebih sering salah pada logat tertentu.</p>
+        </div>
+        <div class="field">
+            <label for="f-perangkat">Mic yang dipakai</label>
+            <select id="f-perangkat" name="perangkat">
+                <option value="">Pilih…</option>
+                <option>HP (mic bawaan)</option>
+                <option>Laptop (mic bawaan)</option>
+                <option>Earphone atau headset ber-mic</option>
+                <option>Mic eksternal (USB atau clip-on)</option>
+            </select>
+        </div>
+        <div class="field">
+            <label for="f-ruangan">Kondisi ruangan</label>
+            <select id="f-ruangan" name="ruangan">
+                <option value="">Pilih…</option>
+                <option>Tenang</option>
+                <option>Sedikit bising (kipas, AC, suara jauh)</option>
+                <option>Bising</option>
+            </select>
+        </div>
+
+        <div class="consent">
+            <h2>Persetujuan</h2>
+            <p>Suaramu direkam saat membacakan kalimat di halaman ini. Rekaman dan isian di atas dipakai untuk <strong>melatih dan menguji model pengenalan suara (Whisper)</strong> dalam proyek kuliah HireNote. Namamu tidak dicatat; rekaman hanya diberi kode pembicara. Rekaman tidak diunggah ke repositori publik. Kamu bisa meminta rekamanmu dihapus kapan saja dengan menyebutkan kode pembicaramu.</p>
+            <label class="check"><input type="checkbox" id="f-setuju" name="setuju"> Saya mengerti dan setuju suara saya direkam untuk keperluan di atas.</label>
+        </div>
+
+        <p id="setup-error" class="notice notice-danger" hidden></p>
+        <button type="submit" class="btn btn-primary">Simpan dan mulai merekam</button>
+    </form>
+</section>
+
+<section id="v-record" class="view" hidden>
+    <div class="progress">
+        <div class="progress-text"><span id="prog-text"></span><button type="button" id="b-toggle-grid" class="btn-link">Lihat semua kalimat</button></div>
+        <div class="bar" aria-hidden="true"><i id="prog-bar"></i></div>
+    </div>
+
+    <div id="grid" class="grid" hidden></div>
+
+    <div id="mic-gate" class="mic-gate">
+        <p>Browser akan meminta izin memakai mikrofon. Pilih <strong>Izinkan</strong>.</p>
+        <button type="button" id="b-mic" class="btn btn-primary">Nyalakan mikrofon</button>
+        <p id="mic-error" class="notice notice-danger" hidden></p>
+    </div>
+
+    <article class="card-sentence">
+        <p class="s-meta"><span id="s-num"></span> · <span id="s-peran"></span></p>
+        <p id="s-teks" class="sentence"></p>
+        <p id="s-hint" class="hint"></p>
+        <p id="s-changed" class="notice" hidden>Kalimat ini sudah diperbarui sejak kamu merekamnya. Tolong rekam ulang.</p>
+    </article>
+
+    <div class="meter" title="Level mikrofon"><i id="meter"></i></div>
+
+    <div class="controls">
+        <button type="button" id="b-rec" class="btn btn-primary btn-rec" disabled>Rekam</button>
+        <button type="button" id="b-play" class="btn btn-quiet" disabled>Putar</button>
+        <span id="s-status" class="status"></span>
+    </div>
+    <ul id="s-warn" class="warnings"></ul>
+
+    <div class="nav">
+        <button type="button" id="b-prev" class="btn btn-quiet">← Sebelumnya</button>
+        <button type="button" id="b-next" class="btn btn-quiet">Berikutnya →</button>
+    </div>
+    <p class="keys">Keyboard: <kbd>Spasi</kbd> rekam/berhenti · <kbd>→</kbd> berikutnya · <kbd>←</kbd> sebelumnya · <kbd>P</kbd> putar</p>
+
+    <details class="rule-block">
+        <summary>Petunjuk membaca</summary>
+        <ul class="tight">
+            <li>Tekan <strong>Rekam</strong>, tunggu sebentar, baca kalimatnya, lalu tekan <strong>Berhenti</strong>.</li>
+            <li>Baca dengan wajar, kecepatan biasa, seperti sedang wawancara. Tidak perlu seperti penyiar.</li>
+            <li>Angka dibaca seperti biasa: “8 juta” dibaca “delapan juta”.</li>
+            <li>Istilah Inggris (query, deploy, bug) dibaca seperti biasa diucapkan di kantor.</li>
+            <li>Kata pengisi <strong>eee</strong>, <strong>hmm</strong>, dan <strong>eh</strong> diucapkan seperti tertulis. Jangan menambah kata pengisi sendiri.</li>
+            <li>Kalau tersendat, salah baca, atau ada suara lain yang keras, tekan <strong>Rekam ulang</strong>.</li>
+            <li>Sesekali tekan <strong>Putar</strong> untuk memastikan suaramu terdengar jelas.</li>
+        </ul>
+    </details>
+
+    <section class="export rule-block">
+        <h2>Kirim rekaman</h2>
+        <p id="export-count"></p>
+        <p>Setelah selesai (atau kalau mau mencicil), unduh ZIP lalu kirim ke orang yang memberimu tautan ini, misalnya lewat Google Drive. Rekaman tetap ada di browser ini sampai kamu menghapusnya.</p>
+        <div class="controls">
+            <button type="button" id="b-zip" class="btn btn-primary">Unduh semua (ZIP)</button>
+            <button type="button" id="b-share" class="btn btn-quiet" hidden>Kirim lewat aplikasi lain</button>
+        </div>
+        <p id="export-status" class="pencil"></p>
+        <p class="danger-zone">
+            <button type="button" id="b-profile" class="btn-link">Ubah data pembicara</button>
+            ·
+            <button type="button" id="b-wipe" class="btn-link btn-link-danger">Hapus semua rekaman di browser ini</button>
+        </p>
+    </section>
+</section>
+
+</main>
+<script type="module" src="app.js"></script>
+</body>
+</html>
